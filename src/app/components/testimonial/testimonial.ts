@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-testimonial',
+  standalone: true,
   imports: [],
   templateUrl: './testimonial.html',
   styleUrl: './testimonial.scss',
 })
-export class Testimonial {
+export class TestimonialComponent {
 
 }
