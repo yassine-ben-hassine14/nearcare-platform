@@ -1,0 +1,232 @@
+.features {
+  padding: 100px 0;
+  background: transparent;
+  position: relative;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
+}
+
+.features-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.features-title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 44.8px;
+  font-weight: 400;
+  line-height: 48px;
+  color: #2D3E50;
+  margin: 0 0 16px 0;
+  
+  .gradient-text {
+    background: linear-gradient(135deg, #FF9B8A 0%, #FFB5A3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.features-subtitle {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18.4px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #64748B;
+  margin: 0;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-bottom: 64px;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.feature-image {
+  width: 75px;
+  height: 83px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin: 24px 0 0 24px;
+}
+
+.feature-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 21.9px;
+  font-weight: 600;
+  color: #2D3E50;
+  margin: 0;
+}
+
+.feature-subtitle {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #64748B;
+  margin: 0;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.feature-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1.67px solid white;
+  
+  img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1);
+  }
+}
+
+.feature-item span {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15.1px;
+  font-weight: 400;
+  color: #1E293B;
+}
+
+.features-cta {
+  text-align: center;
+}
+
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #FF9B8A 0%, #FFB5A3 100%);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 25.4px;
+  font-weight: 600;
+  padding: 20px 64px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0px 4px 8px rgba(0, 187, 167, 0.25);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 10px rgba(0, 187, 167, 0.35), 0px 14px 20px rgba(0, 187, 167, 0.35);
+  }
+}
+
+@media (max-width: 1200px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .feature-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  
+  .feature-image {
+    margin: 24px 0 0 24px;
+  }
+  
+  .feature-content {
+    padding: 24px 24px 24px 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 0 40px;
+  }
+  
+  .features-title {
+    font-size: 36px;
+    line-height: 42px;
+  }
+  
+  .cta-button {
+    font-size: 20px;
+    padding: 16px 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .features {
+    padding: 80px 0;
+  }
+  
+  .container {
+    padding: 0 24px;
+  }
+  
+  .features-header {
+    margin-bottom: 48px;
+  }
+  
+  .features-title {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  
+  .features-subtitle {
+    font-size: 16px;
+  }
+  
+  .feature-card {
+    display: block;
+  }
+  
+  .feature-image {
+    margin: 16px;
+  }
+  
+  .feature-content {
+    padding: 0 16px 16px;
+  }
+  
+  .cta-button {
+    font-size: 18px;
+    padding: 14px 40px;
+  }
+}

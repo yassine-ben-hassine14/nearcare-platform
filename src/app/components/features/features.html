@@ -1,1 +1,40 @@
-<p>features works!</p>
+<section class="features">
+  <div class="container">
+    <div class="features-header">
+      <h2 class="features-title">
+        Une solution pour <span class="gradient-text">tous les acteurs</span>
+      </h2>
+      <p class="features-subtitle">
+        Nearcare transforme l'expérience de chaque partie prenante du système de soins
+      </p>
+    </div>
+    
+    <div class="features-grid">
+      @for (card of cards; track card.title) {
+        <div class="feature-card">
+          <img [src]="card.image" [alt]="card.title" class="feature-image" />
+          
+          <div class="feature-content">
+            <h3 class="feature-title">{{ card.title }}</h3>
+            <p class="feature-subtitle">{{ card.subtitle }}</p>
+            
+            <ul class="feature-list">
+              @for (feature of card.features; track feature.text) {
+                <li class="feature-item">
+                  <div class="feature-icon" [style.background-color]="feature.color">
+                    <img [src]="feature.icon" [alt]="" />
+                  </div>
+                  <span>{{ feature.text }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+    
+    <div class="features-cta">
+      <a href="#" class="cta-button">Je veux voir plus de fonctionnalités</a>
+    </div>
+  </div>
+</section>
