@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar';
 import { HeroComponent } from '../../components/hero/hero';
-import { PartnersComponent } from '../../components/partners/partners';
-import { AboutCeoComponent } from '../../components/about-ceo/about-ceo';
-import { SolutionCardsComponent } from '../../components/solution-cards/solution-cards';
+import { AboutComponent } from '../../components/about/about';
+import { CeoQuoteComponent } from '../../components/ceo-quote/ceo-quote';
+import { FeaturesComponent } from '../../components/features/features';
 import { CtaSectionComponent } from '../../components/cta-section/cta-section';
 import { TestimonialComponent } from '../../components/testimonial/testimonial';
 import { FooterComponent } from '../../components/footer/footer';
@@ -14,9 +14,9 @@ import { FooterComponent } from '../../components/footer/footer';
   imports: [
     NavbarComponent,
     HeroComponent,
-    PartnersComponent,
-    AboutCeoComponent,
-    SolutionCardsComponent,
+    AboutComponent,
+    CeoQuoteComponent,
+    FeaturesComponent,
     CtaSectionComponent,
     TestimonialComponent,
     FooterComponent

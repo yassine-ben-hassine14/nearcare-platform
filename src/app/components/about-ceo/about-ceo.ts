@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-about-ceo',
-  standalone: true,
-  imports: [],
-  templateUrl: './about-ceo.html',
-  styleUrl: './about-ceo.scss',
+  selector: 'app-about',
+  imports: [CommonModule],
+  templateUrl: './about.component.html',
+  styleUrl: './about.component.scss'
 })
-export class AboutCeoComponent {
-
-}
+export class AboutComponent {}
