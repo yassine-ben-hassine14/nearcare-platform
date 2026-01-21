@@ -1,1 +1,65 @@
-<p>testimonial works!</p>
+<section class="testimonial">
+  <div class="testimonial-container">
+    <div class="testimonial-header">
+      <h2 class="testimonial-title">
+        Ils l'ont testé <span class="highlight">pour vous !</span>
+      </h2>
+      <p class="testimonial-subtitle">
+        Découvrez les retours d'expérience de nos utilisateurs
+      </p>
+    </div>
+
+    <div class="testimonial-content">
+      <div class="main-card">
+        <div class="main-card-gradient"></div>
+        <div class="main-card-image">
+          <img [src]="mainTestimonial.image" [alt]="mainTestimonial.name" />
+        </div>
+      </div>
+
+      <div class="testimonial-text-card">
+        <p class="testimonial-text">{{ mainTestimonial.text }}</p>
+        <div class="testimonial-author">
+          <h4 class="author-name">{{ mainTestimonial.name }}</h4>
+          <p class="author-role">{{ mainTestimonial.role }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <button class="pagination-btn prev">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="pagination-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <button class="pagination-btn next">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="user-cards">
+      <div *ngFor="let user of users" class="user-card">
+        <div class="user-info">
+          <img [src]="user.image" [alt]="user.name" class="user-avatar" />
+          <div class="user-details">
+            <h5 class="user-name">{{ user.name }}</h5>
+            <p class="user-role">{{ user.role }}</p>
+          </div>
+        </div>
+        <div class="user-rating">
+          <svg *ngFor="let star of stars" width="16" height="16" viewBox="0 0 16 16" fill="#FCC800">
+            <path d="M8 1.33L10.06 5.5L14.67 6.18L11.33 9.43L12.12 14.01L8 11.85L3.88 14.01L4.67 9.43L1.33 6.18L5.94 5.5L8 1.33Z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

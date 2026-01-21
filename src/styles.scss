@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -6,22 +7,121 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #FFF5F5;
-  position: relative;
+  color: #2D3E50;
   overflow-x: hidden;
+  position: relative;
   min-height: 100vh;
+  
+  // Base background with conic gradient
+  background: conic-gradient(from 354deg at 20.52% 63.91%, #FFFEFE 0deg, #FFBFBF 87deg);
 }
 
-/* Scrollable curved background shape */
+// Radial gradient circle in hero section
 body::before {
   content: '';
   position: absolute;
-  right: -20%;
-  top: 0;
-  width: 60%;
-  height: 100%;
-  min-height: 100vh;
-  background: linear-gradient(180deg, #FF9B8A 0%, #FFA894 50%, #FFB5A3 100%);
-  border-radius: 50% 0 0 50%;
-  z-index: -1;
+  width: 1784px;
+  height: 1487px;
+  right: -100px;
+  top: -300px;
+  background: radial-gradient(
+    ellipse 50% 41.68% at 50% 50%, 
+    rgba(214.95, 129.52, 129.52, 0.20) 0%, 
+    rgba(238.65, 227.18, 227.18, 0.40) 33%
+  );
+  border-radius: 743.5px;
+  border: 6px solid rgba(255, 214.13, 214.13, 0.76);
+  z-index: 0;
+  pointer-events: none;
+}
+
+// Large coral curved shape on the right side (scrollable, not fixed)
+body::after {
+  content: '';
+  position: absolute;
+  width: 3325px;
+  height: 3659px;
+  left: 590px;
+  top: 1589px;
+  opacity: 0.6;
+  background: linear-gradient(0deg, #FA495D 0%, #FF8563 100%);
+  box-shadow: 0px 4px 7.8px rgba(0, 0, 0, 0.25);
+  z-index: 0;
+  pointer-events: none;
+}
+
+// Ensure all page content appears above background layers
+router-outlet,
+app-root > * {
+  position: relative;
+  z-index: 1;
+}
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Remove default link styles
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Button reset
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+// Container utility class
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Utility classes for gradients
+.gradient-coral {
+  background: linear-gradient(135deg, #FF9B8A 0%, #FFB5A3 100%);
+}
+
+.gradient-button {
+  background: linear-gradient(90deg, #FF5F5F 0%, #FFC371 100%);
+}
+
+// Text color utilities
+.text-coral {
+  color: #FF9B8A;
+}
+
+.text-dark {
+  color: #2D3E50;
+}
+
+// Responsive typography
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  // Scale down the radial gradient circle on mobile
+  body::before {
+    width: 892px;
+    height: 743.5px;
+    right: -50px;
+    top: -100px;
+  }
+}
+
+@media (max-width: 480px) {
+  body::before {
+    width: 600px;
+    height: 500px;
+    right: -150px;
+    top: -50px;
+    border-width: 4px;
+  }
 }

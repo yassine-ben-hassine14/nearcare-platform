@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar';
 import { HeroComponent } from '../../components/hero/hero';
+import { PartnersComponent } from '../../components/partners/partners';
 import { AboutComponent } from '../../components/about/about';
 import { CeoQuoteComponent } from '../../components/ceo-quote/ceo-quote';
 import { FeaturesComponent } from '../../components/features/features';
@@ -14,6 +15,7 @@ import { FooterComponent } from '../../components/footer/footer';
   imports: [
     NavbarComponent,
     HeroComponent,
+    PartnersComponent,
     AboutComponent,
     CeoQuoteComponent,
     FeaturesComponent,

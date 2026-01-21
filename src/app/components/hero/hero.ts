@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './hero.html',
-  styleUrl: './hero.scss',
+  styleUrl: './hero.scss'
 })
 export class HeroComponent {
-
+  // Partners moved to separate component
 }
