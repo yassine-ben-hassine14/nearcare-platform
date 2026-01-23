@@ -143,6 +143,12 @@
   will-change: left, width;
 }
 
+.nav-links.hide-underline {
+  .nav-underline {
+    opacity: 0;
+  }
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
   .navbar-wrapper {

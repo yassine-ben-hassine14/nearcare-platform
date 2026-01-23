@@ -12,6 +12,7 @@ import { filter } from 'rxjs/operators';
 })
 export class NavbarComponent implements OnInit {
   @Input() activeLabel = 'Accueil';
+  @Input() hideUnderline = false;
 
   menuItems = [
     { label: 'Accueil', path: '/' },
@@ -82,6 +83,11 @@ export class NavbarComponent implements OnInit {
   private updateUnderline() {
     if (!isPlatformBrowser(this.platformId)) return;
     if (!this.navLinks || !this.navLinkItems) return;
+    if (this.hideUnderline) {
+      this.underlineWidth.set('0px');
+      this.underlineLeft.set('0px');
+      return;
+    }
 
     requestAnimationFrame(() => {
       const links = this.navLinkItems?.toArray() ?? [];
@@ -103,6 +109,10 @@ export class NavbarComponent implements OnInit {
   }
 
   private setActiveLabelFromRoute(url: string) {
+    if (url.includes('joindre-nearcare')) {
+      this.activeLabel = '';
+      return;
+    }
     if (url.includes('qui-sommes-nous')) {
       this.activeLabel = 'Qui sommes-nous ?';
       return;

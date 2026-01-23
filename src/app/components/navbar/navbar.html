@@ -9,7 +9,7 @@
         <img src="Logo.png" alt="NearCare Logo" class="logo" />
       </div>
 
-      <div class="nav-links" #navLinks>
+      <div class="nav-links" #navLinks [class.hide-underline]="hideUnderline">
         <div 
           class="nav-underline"
           [style.left]="underlineLeft()"
@@ -43,10 +43,10 @@
         </div>
       </div>
 
-      <div class="cta-wrapper">
+      <a class="cta-wrapper" routerLink="/joindre-nearcare">
         <div class="cta-gradient"></div>
         <div class="cta-text">Wow, montrez moi ça !</div>
-      </div>
+      </a>
     </div>
   </div>
 </nav>

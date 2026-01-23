@@ -1,0 +1,33 @@
+.join-header {
+  text-align: center;
+}
+
+.join-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #1f2f46;
+  animation: dropBounce 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+@keyframes dropBounce {
+  0% {
+    transform: translateY(-24px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(4px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .join-title {
+    font-size: 36px;
+  }
+}

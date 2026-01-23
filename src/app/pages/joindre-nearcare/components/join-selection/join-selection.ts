@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-hero',
+  selector: 'app-join-selection',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './hero.html',
-  styleUrls: ['./hero.scss']
+  templateUrl: './join-selection.html',
+  styleUrl: './join-selection.scss'
 })
-export class HeroComponent {
-}
+export class JoinSelectionComponent {}

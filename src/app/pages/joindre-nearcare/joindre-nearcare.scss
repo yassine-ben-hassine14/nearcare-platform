@@ -1,0 +1,26 @@
+.joindre-page {
+  padding: 140px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.joindre-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (max-width: 900px) {
+  .joindre-page {
+    padding: 120px 0 0;
+    gap: 60px;
+  }
+
+  .joindre-content {
+    padding: 0 24px;
+  }
+}

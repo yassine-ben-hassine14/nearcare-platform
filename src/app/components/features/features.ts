@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { ScrollAnimationDirective } from '../../directives/scroll-animation.directive';
 
 @Component({
   selector: 'app-features',
   standalone: true,
-  imports: [CommonModule, ScrollAnimationDirective],
+  imports: [CommonModule, RouterModule, ScrollAnimationDirective],
   templateUrl: './features.html',
-  styleUrl: './features.scss'
+  styleUrls: ['./features.scss']
 })
 export class FeaturesComponent {
   features = [
