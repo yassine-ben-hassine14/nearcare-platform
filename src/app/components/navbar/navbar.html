@@ -9,14 +9,37 @@
         <img src="Logo.png" alt="NearCare Logo" class="logo" />
       </div>
 
-      <div class="nav-links">
+      <div class="nav-links" #navLinks>
+        <div 
+          class="nav-underline"
+          [style.left]="underlineLeft()"
+          [style.width]="underlineWidth()"
+        ></div>
         <div 
           *ngFor="let item of menuItems" 
           class="nav-link-wrapper"
         >
-          <div [class.active]="item.active" class="nav-link">
-            {{ item.label }}
-          </div>
+          <ng-container *ngIf="item.path; else plainLabel">
+            <a
+              #navLink
+              [attr.data-label]="item.label"
+              [class.active]="item.label === activeLabel"
+              class="nav-link"
+              [routerLink]="item.path"
+            >
+              {{ item.label }}
+            </a>
+          </ng-container>
+          <ng-template #plainLabel>
+            <span
+              #navLink
+              [attr.data-label]="item.label"
+              [class.active]="item.label === activeLabel"
+              class="nav-link"
+            >
+              {{ item.label }}
+            </span>
+          </ng-template>
         </div>
       </div>
 
@@ -26,5 +49,4 @@
       </div>
     </div>
   </div>
-  <div class="nav-underline"></div>
 </nav>

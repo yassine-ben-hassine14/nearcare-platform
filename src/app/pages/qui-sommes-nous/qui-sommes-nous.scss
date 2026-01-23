@@ -1,0 +1,13 @@
+.qui-sommes-nous-page {
+  padding: 140px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+
+@media (max-width: 900px) {
+  .qui-sommes-nous-page {
+    padding: 120px 0 0;
+    gap: 80px;
+  }
+}

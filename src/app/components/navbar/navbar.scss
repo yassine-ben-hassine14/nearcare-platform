@@ -58,6 +58,7 @@
   gap: 4px;
   display: flex;
   flex: 1;
+  position: relative;
 }
 
 .nav-link-wrapper {
@@ -133,12 +134,13 @@
 }
 
 .nav-underline {
-  width: 87px;
   height: 2px;
   position: absolute;
-  left: 189px;
-  top: 75px;
+  left: 0;
+  bottom: -6px;
   background: linear-gradient(90deg, #FF7F65 0%, #FFA46B 100%);
+  transition: left 0.35s ease, width 0.35s ease, opacity 0.35s ease;
+  will-change: left, width;
 }
 
 /* Responsive */
