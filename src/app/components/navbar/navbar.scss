@@ -10,6 +10,11 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  transition: transform 0.3s ease-in-out;
+
+  &.hidden {
+    transform: translate(-50%, -200%); /* Move up out of view, preserving horizontal centering */
+  }
 }
 
 .navbar-container {

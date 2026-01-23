@@ -8,6 +8,7 @@ import { FeaturesComponent } from '../../components/features/features';
 import { CtaSectionComponent } from '../../components/cta-section/cta-section';
 import { TestimonialComponent } from '../../components/testimonial/testimonial';
 import { FooterComponent } from '../../components/footer/footer';
+import { ScrollAnimationDirective } from '../../directives/scroll-animation.directive';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,8 @@ import { FooterComponent } from '../../components/footer/footer';
     FeaturesComponent,
     CtaSectionComponent,
     TestimonialComponent,
-    FooterComponent
+    FooterComponent,
+    ScrollAnimationDirective
   ],
   templateUrl: './home.html',
   styleUrl: './home.scss'

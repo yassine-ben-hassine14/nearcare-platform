@@ -10,7 +10,11 @@
     </div>
 
     <div class="features-grid">
-      <div *ngFor="let feature of features" class="feature-card" [style.--gradient]="feature.gradient">
+      <div *ngFor="let feature of features; let i = index" 
+           class="feature-card" 
+           [style.--gradient]="feature.gradient"
+           appScrollAnimation
+           [style.transition-delay]="(i * 200) + 'ms'">
         <div class="card-bg" [style.background]="feature.bgGradient"></div>
         
         <div class="feature-content">

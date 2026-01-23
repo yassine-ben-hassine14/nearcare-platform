@@ -1,4 +1,8 @@
-<nav class="navbar-wrapper">
+<nav class="navbar-wrapper" 
+  [class.hidden]="isHidden()" 
+  (mouseenter)="onMouseEnter()" 
+  (mouseleave)="onMouseLeave()"
+>
   <div class="navbar-container">
     <div class="navbar-content">
       <div class="logo-container">
