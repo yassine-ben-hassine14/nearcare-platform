@@ -1,0 +1,16 @@
+.recommandation-page {
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.recommandation-content {
+  padding: 110px 6vw 72px;
+  display: grid;
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .recommandation-content {
+    padding: 96px 6vw 64px;
+  }
+}

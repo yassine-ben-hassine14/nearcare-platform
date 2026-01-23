@@ -1,0 +1,52 @@
+.hero {
+  background: linear-gradient(135deg, rgba(31, 47, 70, 0.95), rgba(31, 47, 70, 0.85));
+  color: #fff;
+  border-radius: 20px;
+  padding: 48px clamp(24px, 5vw, 64px);
+  box-shadow: 0 20px 45px rgba(31, 47, 70, 0.2);
+}
+
+.hero-text {
+  max-width: 720px;
+}
+
+.hero-text h1,
+.hero-text .subtitle {
+  opacity: 0;
+  transform: translateY(-24px);
+  animation: slideIn 0.7s ease-out forwards;
+}
+
+.hero-text .subtitle {
+  animation-delay: 0.12s;
+}
+
+.subtitle {
+  margin-top: 12px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.instruction {
+  margin-top: 18px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ff6260;
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+  animation-delay: 0.55s;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
