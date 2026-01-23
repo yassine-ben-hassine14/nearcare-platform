@@ -9,5 +9,4 @@ import { CommonModule } from '@angular/common';
   styleUrl: './hero.scss'
 })
 export class HeroComponent {
-  // Partners moved to separate component
 }

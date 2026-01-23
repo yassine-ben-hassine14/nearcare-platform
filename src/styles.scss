@@ -22,8 +22,8 @@ body::before {
   position: absolute;
   width: 1784px;
   height: 1487px;
-  right: -100px;
-  top: -300px;
+  right: -275px;
+  top: -428px;
   background: radial-gradient(
     ellipse 50% 41.68% at 50% 50%, 
     rgba(214.95, 129.52, 129.52, 0.20) 0%, 
@@ -36,7 +36,7 @@ body::before {
 }
 
 // Large coral curved shape on the right side (scrollable, not fixed)
-body::after {
+/* body::after {
   content: '';
   position: absolute;
   width: 3325px;
@@ -48,7 +48,7 @@ body::after {
   box-shadow: 0px 4px 7.8px rgba(0, 0, 0, 0.25);
   z-index: 0;
   pointer-events: none;
-}
+} */
 
 // Ensure all page content appears above background layers
 router-outlet,

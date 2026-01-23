@@ -1,26 +1,22 @@
 <section class="partners-section">
-  <div class="container">
-    <h2 class="section-title">Ils nous font confiance</h2>
-    
-    <div class="partners-grid">
-      <div class="partner-logo">
-        <span class="partner-name">Doctolib</span>
-      </div>
-      <div class="partner-logo">
-        <span class="partner-name">Medtronic</span>
-      </div>
-      <div class="partner-logo">
-        <span class="partner-name">Philips</span>
-      </div>
-      <div class="partner-logo">
-        <span class="partner-name">Siemens</span>
-      </div>
-      <div class="partner-logo">
-        <span class="partner-name">GE Healthcare</span>
-      </div>
-      <div class="partner-logo">
-        <span class="partner-name">Roche</span>
-      </div>
+  <!-- NOUVEAU: Titre + Flèche -->
+  <div class="partners-header">
+    <h2 class="partners-title">Ils nous font confiance</h2>
+    <div class="partners-arrow">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Animation des logos -->
+  <div class="curve-container">
+    <div 
+      class="logo-circle" 
+      *ngFor="let partner of partners; let i = index" 
+      [style.--i]="i"
+    >
+      <img [src]="'/' + partner.logo" [alt]="partner.name">
     </div>
   </div>
 </section>

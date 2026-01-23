@@ -1,174 +1,195 @@
-.ceo-quote {
-  padding: 100px 0;
+.about-ceo-section {
+  padding: 100px 20px;
+  position: relative;
+  z-index: 1;
   background: transparent;
+
+  @media (max-width: 768px) {
+    padding: 60px 20px;
+  }
 }
 
 .container {
-  max-width: 1440px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 80px;
 }
 
-.quote-grid {
-  display: grid;
-  grid-template-columns: 608px 608px;
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 64px;
-  justify-content: space-between;
-  align-items: stretch;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 40px;
+  }
 }
 
+// Quote Card (Left Side)
 .quote-card {
+  width: 100%;
+  max-width: 608px;
+  padding: 32px;
   background: rgba(255, 255, 255, 0.40);
   border-radius: 32px;
   border: 1px solid rgba(255, 255, 255, 0.60);
-  padding: 48px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  backdrop-filter: blur(24px);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+
+  @media (max-width: 768px) {
+    padding: 24px;
+  }
 }
 
 .quote-icon {
+  position: absolute;
+  left: 25px;
+  top: 25px;
   width: 48px;
   height: 48px;
-  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-mark {
+  font-size: 60px;
+  font-weight: 700;
+  color: rgba(255, 106, 0, 0.3);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1;
+}
+
+.quote-content {
+  margin-top: 20px;
 }
 
 .quote-text {
-  font-family: 'Roboto', sans-serif;
+  color: #314158;
   font-size: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-style: italic;
   font-weight: 400;
   line-height: 50px;
-  color: #314158;
   margin: 0;
+
+  @media (max-width: 1024px) {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 20px;
+    line-height: 30px;
+  }
 }
 
+// CEO Photo Card (Right Side)
 .ceo-card {
-  position: relative;
-  border-radius: 48px;
-  overflow: hidden;
+  width: 100%;
+  max-width: 608px;
+  padding: 32px 32px 56px 32px;
   background: rgba(255, 255, 255, 0.30);
-}
-
-.gradient-border {
-  position: absolute;
-  inset: 0;
   border-radius: 48px;
   border: 5px solid white;
-  pointer-events: none;
-  z-index: 2;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+
+  @media (max-width: 768px) {
+    padding: 24px 24px 40px 24px;
+  }
 }
 
-.ceo-content {
+.glow-effect {
+  position: absolute;
+  right: 80px;
+  top: -16px;
+  width: 97px;
+  height: 97px;
+  background: linear-gradient(135deg, #00D5BE 0%, #2B7FFF 100%);
+  border-radius: 50%;
+  opacity: 0.20;
+  filter: blur(20px);
+  box-shadow: 40px 40px 40px rgba(213, 43, 0, 0.3);
+  z-index: 0;
+}
+
+.card-content {
   position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 36px;
-  height: 100%;
 }
 
-.ceo-image {
+.photo-wrapper {
   width: 100%;
-  height: auto;
-  border-radius: 24px;
+  border-radius: 32px;
+  overflow: hidden;
+  background: white;
+
+  @media (max-width: 768px) {
+    border-radius: 24px;
+  }
+}
+
+.ceo-photo {
+  width: 100%;
+  height: 678px;
   object-fit: cover;
-  max-height: 678px;
+  display: block;
+
+  @media (max-width: 1024px) {
+    height: 500px;
+  }
+
+  @media (max-width: 768px) {
+    height: 400px;
+  }
+
+  @media (max-width: 480px) {
+    height: 350px;
+  }
 }
 
 .ceo-info {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  z-index: 3;
-  position: relative;
 }
 
 .ceo-name {
-  font-family: 'Inter', sans-serif;
-  font-size: 21.80px;
-  font-weight: 600;
   color: #0F172B;
+  font-size: 21.8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  line-height: 32px;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    line-height: 28px;
+  }
 }
 
 .ceo-title {
-  font-family: 'Inter', sans-serif;
-  font-size: 15.10px;
+  color: #314158;
+  font-size: 15.1px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
-  color: #009689;
+  line-height: 24px;
   margin: 0;
-}
 
-.gradient-blur {
-  position: absolute;
-  bottom: 36px;
-  right: 36px;
-  width: 97px;
-  height: 97px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #00D5BE 0%, #2B7FFF 100%);
-  filter: blur(40px);
-  z-index: 1;
-  pointer-events: none;
-}
-
-@media (max-width: 1200px) {
-  .quote-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-  }
-  
-  .quote-text {
-    font-size: 32px;
-    line-height: 42px;
-  }
-}
-
-@media (max-width: 900px) {
-  .container {
-    padding: 0 40px;
-  }
-  
-  .quote-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  
-  .quote-card {
-    padding: 32px;
-  }
-  
-  .quote-text {
-    font-size: 28px;
-    line-height: 38px;
-  }
-  
-  .ceo-content {
-    padding: 24px;
-  }
-}
-
-@media (max-width: 768px) {
-  .ceo-quote {
-    padding: 80px 0;
-  }
-  
-  .container {
-    padding: 0 24px;
-  }
-  
-  .quote-text {
-    font-size: 24px;
-    line-height: 34px;
-  }
-  
-  .ceo-name {
-    font-size: 18px;
-  }
-  
-  .ceo-title {
+  @media (max-width: 768px) {
     font-size: 14px;
+    line-height: 22px;
   }
 }
