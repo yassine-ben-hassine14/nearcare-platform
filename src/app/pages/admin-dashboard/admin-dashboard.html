@@ -1,0 +1,191 @@
+<div class="admin-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="Logo.png" alt="NearCare Logo" class="admin-logo">
+        </div>
+
+        <nav class="sidebar-nav">
+            <a class="nav-item" [class.active]="activeTab === 'overview'" (click)="setActiveTab('overview')">
+                <span class="nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    </svg>
+                </span>
+                Vue d'ensemble
+            </a>
+            <a class="nav-item" [class.active]="activeTab === 'messages'" (click)="setActiveTab('messages')">
+                <span class="nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                </span>
+                Messages Contact
+            </a>
+            <a class="nav-item" [class.active]="activeTab === 'recommendations'"
+                (click)="setActiveTab('recommendations')">
+                <span class="nav-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                    </svg>
+                </span>
+                Recommandations
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="admin-profile">
+                <div class="avatar">A</div>
+                <div class="info">
+                    <div class="name">Admin User</div>
+                    <div class="role">Super Admin</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <header class="top-header">
+            <h1 class="page-title">Welcome Admin</h1>
+            <div class="actions">
+                <!-- Example extra action if needed -->
+            </div>
+        </header>
+
+        <div class="content-container">
+
+            <!-- Summary Widgets (Top Row) -->
+            @if (activeTab === 'overview') {
+            <div class="widgets-row">
+                <div class="widget-card">
+                    <div class="widget-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="widget-info">
+                        <span class="label">Total Messages</span>
+                        <span class="value">{{ stats.totalMessages }}</span>
+                    </div>
+                </div>
+
+                <div class="widget-card">
+                    <div class="widget-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                        </svg>
+                    </div>
+                    <div class="widget-info">
+                        <span class="label">Nouvelles Recommandations</span>
+                        <span class="value">{{ stats.newRecommendations }}</span>
+                    </div>
+                </div>
+
+                <div class="widget-card">
+                    <div class="widget-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                    </div>
+                    <div class="widget-info">
+                        <span class="label">Taux de satisfaction</span>
+                        <span class="value">{{ stats.satisfactionRate }}%</span>
+                    </div>
+                </div>
+            </div>
+            }
+
+            <!-- Section 1: Contact Form Submissions (The Table/List) -->
+            @if (activeTab === 'overview' || activeTab === 'messages') {
+            <section class="messages-section">
+                <div class="section-card">
+                    <h2 class="section-title">Messages de Contact</h2>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Établissement</th>
+                                    <th>Fonction</th>
+                                    <th>Email</th>
+                                    <th>Téléphone</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let msg of messages">
+                                    <tr class="data-row">
+                                        <td>{{ msg.lastName }}</td>
+                                        <td>{{ msg.firstName }}</td>
+                                        <td>{{ msg.establishment }}</td>
+                                        <td>{{ msg.function }}</td>
+                                        <td>{{ msg.email }}</td>
+                                        <td>{{ msg.phone }}</td>
+                                    </tr>
+                                    <tr class="message-row">
+                                        <td colspan="6">
+                                            <div class="message-container">
+                                                <span class="message-label">Message:</span>
+                                                <p class="message-text">{{ msg.message }}</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                                <tr *ngIf="messages.length === 0">
+                                    <td colspan="6" class="empty-state">Aucun message pour le moment.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            }
+
+            <!-- Section 2: User Recommendations -->
+            @if (activeTab === 'overview' || activeTab === 'recommendations') {
+            <section class="messages-section">
+                <div class="section-card">
+                    <h2 class="section-title">Recommandations Utilisateurs</h2>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Prénoms</th>
+                                    <th>Entreprise</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let rec of recommendations">
+                                    <td>{{ rec.nom }}</td>
+                                    <td>{{ rec.prenoms }}</td>
+                                    <td>{{ rec.entreprise }}</td>
+                                    <td>{{ rec.email }}</td>
+                                </tr>
+                                <tr *ngIf="recommendations.length === 0">
+                                    <td colspan="4" class="empty-state">Aucune recommandation pour le moment.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            }
+
+        </div>
+    </main>
+</div>

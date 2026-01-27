@@ -1,22 +1,39 @@
 <section class="form-card">
-  <form class="recommandation-form">
-    <div class="field">
-      <label for="nom">Nom</label>
-      <input id="nom" type="text" placeholder="Nom" />
+  <form class="recommandation-form" [formGroup]="recommandationForm" (ngSubmit)="onSubmit()">
+    <div class="toast" [class.visible]="toastVisible()">
+      Merci ! Votre demande a été envoyée avec succès.
     </div>
-    <div class="field">
-      <label for="prenoms">Prénoms</label>
-      <input id="prenoms" type="text" placeholder="Prénoms" />
+    <div class="field" [class.invalid]="isInvalid('nom')" [class.valid]="isValid('nom')">
+      <label for="nom">Nom *</label>
+      <input id="nom" type="text" placeholder="Nom" formControlName="nom" />
+      @if (isInvalid('nom')) {
+        <small class="error-message">Le nom est requis.</small>
+      }
     </div>
-    <div class="field">
-      <label for="entreprise">Entreprise</label>
-      <input id="entreprise" type="text" placeholder="Entreprise" />
+    <div class="field" [class.invalid]="isInvalid('prenoms')" [class.valid]="isValid('prenoms')">
+      <label for="prenoms">Prénoms *</label>
+      <input id="prenoms" type="text" placeholder="Prénoms" formControlName="prenoms" />
+      @if (isInvalid('prenoms')) {
+        <small class="error-message">Les prénoms sont requis.</small>
+      }
     </div>
-    <div class="field">
-      <label for="email">E-mail</label>
-      <input id="email" type="email" placeholder="E-mail" />
+    <div class="field" [class.invalid]="isInvalid('entreprise')" [class.valid]="isValid('entreprise')">
+      <label for="entreprise">Entreprise *</label>
+      <input id="entreprise" type="text" placeholder="Entreprise" formControlName="entreprise" />
+      @if (isInvalid('entreprise')) {
+        <small class="error-message">L'entreprise est requise.</small>
+      }
     </div>
-    
-    <button type="submit" class="submit-button">Convaincre mon établissement</button>
+    <div class="field" [class.invalid]="isInvalid('email')" [class.valid]="isValid('email')">
+      <label for="email">E-mail *</label>
+      <input id="email" type="email" placeholder="E-mail" formControlName="email" />
+      @if (isInvalid('email')) {
+        <small class="error-message">Entrez un email valide.</small>
+      }
+    </div>
+
+    <button type="submit" class="submit-button" [disabled]="recommandationForm.invalid">
+      Convaincre mon établissement
+    </button>
   </form>
 </section>

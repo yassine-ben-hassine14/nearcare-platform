@@ -1,8 +1,12 @@
 .form-card {
+  --navy: #1f2f46;
+  --coral: #ff6260;
+  --gray: rgba(31, 47, 70, 0.2);
   background: #fff;
   border-radius: 20px;
   padding: 36px clamp(24px, 5vw, 48px);
   box-shadow: 0 20px 40px rgba(31, 47, 70, 0.12);
+  position: relative;
 }
 
 .recommandation-form {
@@ -13,6 +17,7 @@
 .field {
   display: grid;
   gap: 8px;
+  position: relative;
 }
 
 label {
@@ -22,7 +27,7 @@ label {
 }
 
 input {
-  border: 1px solid rgba(31, 47, 70, 0.2);
+  border: 1px solid var(--gray);
   border-radius: 12px;
   padding: 12px 14px;
   font-size: 14px;
@@ -31,17 +36,23 @@ input {
 
 input:focus {
   outline: none;
-  border-color: #ff6260;
+  border-color: var(--navy);
   box-shadow: 0 0 0 3px rgba(255, 98, 96, 0.25);
 }
 
-.captcha {
-  border: 1px dashed rgba(31, 47, 70, 0.25);
-  border-radius: 14px;
-  padding: 14px;
-  font-size: 13px;
-  color: #1f2f46;
-  background: rgba(31, 47, 70, 0.04);
+.field.invalid input {
+  border-color: rgba(255, 98, 96, 0.7);
+  animation: shake 0.35s ease;
+}
+
+.field.valid::after {
+  content: '✓';
+  position: absolute;
+  right: 14px;
+  top: 36px;
+  font-size: 12px;
+  color: #2bb673;
+  font-weight: 700;
 }
 
 .submit-button {
@@ -56,7 +67,58 @@ input:focus {
   cursor: pointer;
   align-self: flex-start;
   box-shadow: 0 16px 30px rgba(255, 98, 96, 0.35);
+}
+
+.submit-button:disabled {
+  filter: grayscale(0.7);
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.submit-button:not(:disabled) {
   animation: pulse 1.6s ease-in-out infinite;
+}
+
+.error-message {
+  font-size: 12px;
+  color: #f06c6a;
+  background: rgba(255, 98, 96, 0.08);
+  border-radius: 10px;
+  padding: 6px 10px;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: max-height 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+  overflow: hidden;
+}
+
+.field.invalid .error-message {
+  max-height: 40px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: linear-gradient(120deg, rgba(31, 47, 70, 0.95), rgba(255, 98, 96, 0.95));
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 16px;
+  box-shadow: 0 16px 30px rgba(31, 47, 70, 0.2);
+  transform: translateY(-16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 20;
+}
+
+.toast.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @keyframes pulse {
@@ -68,5 +130,23 @@ input:focus {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }

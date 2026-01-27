@@ -16,6 +16,6 @@ import { FooterComponent } from '../../components/footer/footer';
     FooterComponent
   ],
   templateUrl: './contact.html',
-  styleUrl: './contact.scss'
+  styleUrls: ['./contact.scss']
 })
 export class ContactPageComponent {}

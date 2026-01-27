@@ -41,27 +41,27 @@ export class TestimonialComponent {
     },
     {
       id: 4,
-      name: 'Laurent',
-      role: 'RH',
-      text: "Un outil indispensable pour la gestion des ressources humaines. La simplicité d'utilisation et l'efficacité sont au rendez-vous.",
-      avatar: 'avatar-illustration.svg'
+      name: 'William',
+      role: 'Responsable qualité et gestion des risques',
+      text: "L’appli nous permet de faire émerger facilement les problématiques de terrain et de faire  adhérer les professionnels à  la démarche d’amélioration continue. Tout est sur smartphone en 2 clics ! Enfin un outil fun pour manager la qualité !",
+      avatar: 'L.jfif'
     }
   ]);
 
   currentIndex = signal(0);
 
-  currentTestimonial = computed(() => 
+  currentTestimonial = computed(() =>
     this.testimonials()[this.currentIndex()]
   );
 
   nextTestimonial() {
-    this.currentIndex.update(index => 
+    this.currentIndex.update(index =>
       index === this.testimonials().length - 1 ? 0 : index + 1
     );
   }
 
   previousTestimonial() {
-    this.currentIndex.update(index => 
+    this.currentIndex.update(index =>
       index === 0 ? this.testimonials().length - 1 : index - 1
     );
   }
