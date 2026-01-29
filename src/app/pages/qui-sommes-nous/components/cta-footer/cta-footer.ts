@@ -9,4 +9,4 @@ import { RouterModule } from '@angular/router';
   templateUrl: './cta-footer.html',
   styleUrl: './cta-footer.scss'
 })
-export class CtaFooterComponent {}
+export class CtaFooterComponent { }

@@ -5,7 +5,6 @@
 
 .hero {
   padding: 120px 0 60px;
-  /* Increased top padding to move title down */
   text-align: center;
 }
 
@@ -62,7 +61,6 @@
 
 .card-header {
   background: linear-gradient(90deg, #FF6B6B 0%, #FF8E7E 100%);
-  /* Vibrant Coral Gradient from image */
   height: 200px;
   display: flex;
   align-items: center;
@@ -76,7 +74,6 @@
   svg {
     display: block;
     width: 64px;
-    /* Large icon */
     height: 64px;
   }
 }
@@ -94,9 +91,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 24px;
   font-weight: 700;
-  /* Bold */
   color: #37485E;
-  /* Dark text */
   margin: 0;
   margin-bottom: 8px;
 }
@@ -111,14 +106,11 @@
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 400;
-    /* Lighter/Normal weight */
     color: #6B7280;
-    /* Lighter text color */
     line-height: 1.5;
   }
 }
 
-/* Responsive adjustments */
 @media (max-width: 900px) {
   .features-grid {
     grid-template-columns: 1fr;

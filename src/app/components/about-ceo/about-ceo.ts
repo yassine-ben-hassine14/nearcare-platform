@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+/* seems redundant w/ CeoQuoteComponent but keeping for now for structure */
 @Component({
   selector: 'app-about-ceo',
   standalone: true,

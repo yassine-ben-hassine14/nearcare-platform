@@ -11,94 +11,20 @@
     <div class="features-container">
       <div class="features-grid">
 
-        <!-- Card 1 (Top-Left) -->
-        <article class="feature-card">
+        <!-- loop thru featuresList to avoid repeating markup -->
+        <article class="feature-card" *ngFor="let feature of featuresList">
           <div class="card-header">
             <div class="header-icon">
-              <!-- Outline Speech Bubble Icon -->
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                 stroke-width="2" width="64" height="64">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                <path stroke-linecap="round" stroke-linejoin="round" [attr.d]="feature.iconPath" />
               </svg>
             </div>
           </div>
           <div class="card-body">
-            <h3 class="card-title">Messagerie et alertes (soignants)</h3>
+            <h3 class="card-title">{{ feature.title }}</h3>
             <div class="card-list">
-              <p>Echanges sécurisés avec NLP</p>
-              <p>Photos et documents</p>
-              <p>Priorisation des messages</p>
-              <p>Alertes ciblées par thème</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 2 (Top-Right) -->
-        <article class="feature-card">
-          <div class="card-header">
-            <div class="header-icon">
-              <!-- Outline Bell Icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                stroke-width="2" width="64" height="64">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-              </svg>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">Sonnette digitale (patients/soignants)</h3>
-            <div class="card-list">
-              <p>Qualification des demandes</p>
-              <p>Dispaching intelligent</p>
-              <p>Statut temps réel des demandes</p>
-              <p>Feedback temps réel du patient</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 3 (Bottom-Left) -->
-        <article class="feature-card">
-          <div class="card-header">
-            <div class="header-icon">
-              <!-- Outline User Group Icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                stroke-width="2" width="64" height="64">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">Dashboard (soignant)</h3>
-            <div class="card-list">
-              <p>Organisateur de tâches</p>
-              <p>Patients et parcours en mobilité</p>
-              <p>Procédures nouveaux arrivants</p>
-              <p>Feedback bien être/évenements indésirables</p>
-            </div>
-          </div>
-        </article>
-
-        <!-- Card 4 (Bottom-Right) -->
-        <article class="feature-card">
-          <div class="card-header">
-            <div class="header-icon">
-              <!-- Outline Chart Bar Icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                stroke-width="2" width="64" height="64">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">Données temps réels (manager)</h3>
-            <div class="card-list">
-              <p>Activités afférentes aux soins</p>
-              <p>Satisfaction temps réel du patient</p>
-              <p>Evènements indésirables</p>
-              <p>Veille sociale</p>
+              <p *ngFor="let item of feature.items">{{ item }}</p>
             </div>
           </div>
         </article>

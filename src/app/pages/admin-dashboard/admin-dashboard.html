@@ -1,11 +1,12 @@
 <div class="admin-layout">
-    <!-- Sidebar Navigation -->
+
     <aside class="sidebar">
         <div class="sidebar-header">
             <img src="Logo.png" alt="NearCare Logo" class="admin-logo">
         </div>
 
         <nav class="sidebar-nav">
+            <!-- active tab styling -->
             <a class="nav-item" [class.active]="activeTab === 'overview'" (click)="setActiveTab('overview')">
                 <span class="nav-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
@@ -16,16 +17,18 @@
                 </span>
                 Vue d'ensemble
             </a>
+
             <a class="nav-item" [class.active]="activeTab === 'messages'" (click)="setActiveTab('messages')">
                 <span class="nav-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v10a2 2 0 002 2z" />
                     </svg>
                 </span>
                 Messages Contact
             </a>
+
             <a class="nav-item" [class.active]="activeTab === 'recommendations'"
                 (click)="setActiveTab('recommendations')">
                 <span class="nav-icon">
@@ -50,18 +53,16 @@
         </div>
     </aside>
 
-    <!-- Main Content Area -->
     <main class="main-content">
+
         <header class="top-header">
             <h1 class="page-title">Welcome Admin</h1>
             <div class="actions">
-                <!-- Example extra action if needed -->
             </div>
         </header>
 
         <div class="content-container">
 
-            <!-- Summary Widgets (Top Row) -->
             @if (activeTab === 'overview') {
             <div class="widgets-row">
                 <div class="widget-card">
@@ -69,7 +70,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                             stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v10a2 2 0 002 2z" />
                         </svg>
                     </div>
                     <div class="widget-info">
@@ -108,7 +109,6 @@
             </div>
             }
 
-            <!-- Section 1: Contact Form Submissions (The Table/List) -->
             @if (activeTab === 'overview' || activeTab === 'messages') {
             <section class="messages-section">
                 <div class="section-card">
@@ -144,6 +144,7 @@
                                         </td>
                                     </tr>
                                 </ng-container>
+
                                 <tr *ngIf="messages.length === 0">
                                     <td colspan="6" class="empty-state">Aucun message pour le moment.</td>
                                 </tr>
@@ -154,7 +155,6 @@
             </section>
             }
 
-            <!-- Section 2: User Recommendations -->
             @if (activeTab === 'overview' || activeTab === 'recommendations') {
             <section class="messages-section">
                 <div class="section-card">
@@ -176,6 +176,7 @@
                                     <td>{{ rec.entreprise }}</td>
                                     <td>{{ rec.email }}</td>
                                 </tr>
+
                                 <tr *ngIf="recommendations.length === 0">
                                     <td colspan="4" class="empty-state">Aucune recommandation pour le moment.</td>
                                 </tr>

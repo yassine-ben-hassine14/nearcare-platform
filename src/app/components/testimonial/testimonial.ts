@@ -1,4 +1,4 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface Testimonial {
@@ -9,6 +9,7 @@ interface Testimonial {
   avatar: string;
 }
 
+/* carousel of user reviews */
 @Component({
   selector: 'app-testimonial',
   standalone: true,
@@ -17,7 +18,8 @@ interface Testimonial {
   styleUrl: './testimonial.scss'
 })
 export class TestimonialComponent {
-  testimonials = signal<Testimonial[]>([
+
+  testimonials: Testimonial[] = [
     {
       id: 1,
       name: 'Pauline',
@@ -46,27 +48,31 @@ export class TestimonialComponent {
       text: "L’appli nous permet de faire émerger facilement les problématiques de terrain et de faire  adhérer les professionnels à  la démarche d’amélioration continue. Tout est sur smartphone en 2 clics ! Enfin un outil fun pour manager la qualité !",
       avatar: 'L.jfif'
     }
-  ]);
+  ];
 
-  currentIndex = signal(0);
+  currentIndex = 0;
 
-  currentTestimonial = computed(() =>
-    this.testimonials()[this.currentIndex()]
-  );
+  getCurrentTestimonial(): Testimonial {
+    return this.testimonials[this.currentIndex];
+  }
 
   nextTestimonial() {
-    this.currentIndex.update(index =>
-      index === this.testimonials().length - 1 ? 0 : index + 1
-    );
+    if (this.currentIndex === this.testimonials.length - 1) {
+      this.currentIndex = 0;
+    } else {
+      this.currentIndex = this.currentIndex + 1;
+    }
   }
 
   previousTestimonial() {
-    this.currentIndex.update(index =>
-      index === 0 ? this.testimonials().length - 1 : index - 1
-    );
+    if (this.currentIndex === 0) {
+      this.currentIndex = this.testimonials.length - 1;
+    } else {
+      this.currentIndex = this.currentIndex - 1;
+    }
   }
 
   goToTestimonial(index: number) {
-    this.currentIndex.set(index);
+    this.currentIndex = index;
   }
 }

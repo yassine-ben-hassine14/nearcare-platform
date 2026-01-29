@@ -2,11 +2,14 @@
   <div class="trust-logos__header">
     <p class="section-eyebrow">Ils nous font confiance</p>
   </div>
+
   <div class="trust-logos__marquee">
     <div class="marquee-track">
+      <!-- double loop for infinite scroll (avoids gaps) -->
       <div class="marquee-item" *ngFor="let logo of logos">
         <img [src]="'/' + logo.src" [alt]="logo.name" />
       </div>
+
       <div class="marquee-item" *ngFor="let logo of logos">
         <img [src]="'/' + logo.src" [alt]="logo.name" />
       </div>

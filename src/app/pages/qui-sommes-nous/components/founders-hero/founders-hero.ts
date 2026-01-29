@@ -8,4 +8,4 @@ import { CommonModule } from '@angular/common';
   templateUrl: './founders-hero.html',
   styleUrl: './founders-hero.scss'
 })
-export class FoundersHeroComponent {}
+export class FoundersHeroComponent { }

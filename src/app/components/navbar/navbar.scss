@@ -24,7 +24,6 @@
   position: relative;
 }
 
-/* 🔥 Smooth animated gradient layer */
 .navbar-container::before {
   content: '';
   position: absolute;
@@ -77,7 +76,6 @@
   }
 }
 
-/* White text on gradient */
 .navbar-container.cta-hovered {
   .nav-link {
     color: white;

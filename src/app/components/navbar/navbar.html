@@ -1,67 +1,37 @@
-<nav
-  class="navbar-wrapper"
-  [class.hidden]="isHidden()"
-  (mouseenter)="onMouseEnter()"
-  (mouseleave)="onMouseLeave()"
->
-  <div
-    class="navbar-container"
-    [class.cta-hovered]="isCtaHovered()"
-  >
+<nav class="navbar-wrapper" [class.hidden]="isHidden" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+  <!-- toggle cta-hovered class for styling when hovering button -->
+  <div class="navbar-container" [class.cta-hovered]="isCtaHovered">
     <div class="navbar-content">
+
       <div class="logo-container">
         <img src="Logo.png" alt="NearCare Logo" class="logo" />
       </div>
 
-      <div
-        class="nav-links"
-        #navLinks
-        [class.hide-underline]="hideUnderline"
-      >
-        <div
-          class="nav-underline"
-          [style.left]="underlineLeft()"
-          [style.width]="underlineWidth()"
-        ></div>
+      <div class="nav-links" #navLinks [class.hide-underline]="hideUnderline">
+        <!-- red underline moved via TS calculations -->
+        <div class="nav-underline" [style.left]="underlineLeft" [style.width]="underlineWidth"></div>
 
-        <div
-          *ngFor="let item of menuItems"
-          class="nav-link-wrapper"
-        >
+        <div *ngFor="let item of menuItems" class="nav-link-wrapper">
           <ng-container *ngIf="item.path; else plainLabel">
-            <a
-              #navLink
-              [attr.data-label]="item.label"
-              [class.active]="item.label === activeLabel"
-              class="nav-link"
-              [routerLink]="item.path"
-            >
+            <a #navLink [attr.data-label]="item.label" [class.active]="item.label === activeLabel" class="nav-link"
+              [routerLink]="item.path">
               {{ item.label }}
             </a>
           </ng-container>
 
           <ng-template #plainLabel>
-            <span
-              #navLink
-              [attr.data-label]="item.label"
-              [class.active]="item.label === activeLabel"
-              class="nav-link"
-            >
+            <span #navLink [attr.data-label]="item.label" [class.active]="item.label === activeLabel" class="nav-link">
               {{ item.label }}
             </span>
           </ng-template>
         </div>
       </div>
 
-      <a
-        class="cta-wrapper"
-        routerLink="/joindre-nearcare"
-        (mouseenter)="onCtaEnter()"
-        (mouseleave)="onCtaLeave()"
-      >
+      <a class="cta-wrapper" routerLink="/joindre-nearcare" (mouseenter)="onCtaEnter()" (mouseleave)="onCtaLeave()">
         <div class="cta-gradient"></div>
         <div class="cta-text">Wow, montrez moi ça !</div>
       </a>
+
     </div>
   </div>
 </nav>

@@ -1,62 +1,59 @@
 <section class="testimonials-section">
-    <div class="testimonials-container">
-      <h2 class="testimonials-title">
-        Ils l’ont testé pour vous !
-      </h2>
-      
-      <div class="testimonials-carousel">
-        <div class="testimonial-main card-glass">
-          <div class="testimonial-header">
-            <img [src]="'/' + currentTestimonial().avatar" [alt]="currentTestimonial().name" class="testimonial-avatar" />
-            <div class="testimonial-info">
-              <div class="testimonial-name">{{ currentTestimonial().name }}</div>
-              <div class="testimonial-role">{{ currentTestimonial().role }}</div>
-            </div>
-            <div class="testimonial-rating">
-              <svg class="star-icon" viewBox="0 0 24 24" fill="#FFC107">
-                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-              </svg>
-              <svg class="star-icon" viewBox="0 0 24 24" fill="#FFC107">
-                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-              </svg>
-              <svg class="star-icon" viewBox="0 0 24 24" fill="#FFC107">
-                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-              </svg>
-              <svg class="star-icon" viewBox="0 0 24 24" fill="#FFC107">
-                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-              </svg>
-              <svg class="star-icon" viewBox="0 0 24 24" fill="#FFC107">
-                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-              </svg>
+  <div class="testimonials-container">
+    <h2 class="testimonials-title">
+      Ils l’ont testé pour vous !
+    </h2>
+
+    <div class="testimonials-carousel">
+
+      <div class="testimonial-main card-glass">
+        <div class="testimonial-header">
+          <img [src]="'/' + getCurrentTestimonial().avatar" [alt]="getCurrentTestimonial().name"
+            class="testimonial-avatar" />
+          <div class="testimonial-info">
+            <div class="testimonial-name">{{ getCurrentTestimonial().name }}</div>
+            <div class="testimonial-role">{{ getCurrentTestimonial().role }}</div>
+          </div>
+          <div class="testimonial-rating">
+            <svg class="star-icon" viewBox="0 0 24 24" fill="#FFC107">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+            </svg>
+            <svg class="star-icon" viewBox="0 0 24 24" fill="#FFC107">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+            </svg>
+            <svg class="star-icon" viewBox="0 0 24 24" fill="#FFC107">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+            </svg>
+            <svg class="star-icon" viewBox="0 0 24 24" fill="#FFC107">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+            </svg>
+            <svg class="star-icon" viewBox="0 0 24 24" fill="#FFC107">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+            </svg>
+          </div>
+        </div>
+        <p class="testimonial-text">
+          {{ getCurrentTestimonial().text }}
+        </p>
+      </div>
+
+      <div class="user-cards-container">
+        <div *ngFor="let testimonial of testimonials; let i = index" class="user-card"
+          [class.active]="i === currentIndex" (click)="goToTestimonial(i)">
+
+          <div class="user-card-header">
+            <img [src]="'/' + testimonial.avatar" [alt]="testimonial.name" class="user-avatar" />
+            <div class="user-info">
+              <div class="user-name">{{ testimonial.name }}</div>
+              <div class="user-role">{{ testimonial.role }}</div>
             </div>
           </div>
-          <p class="testimonial-text">
-            {{ currentTestimonial().text }}
-          </p>
-        </div>
-
-        <div class="user-cards-container">
-          @for (testimonial of testimonials(); track testimonial.id; let i = $index) {
-            <div 
-              class="user-card" 
-              [class.active]="i === currentIndex()"
-              (click)="goToTestimonial(i)"
-            >
-              <div class="user-card-header">
-                <img [src]="'/' + testimonial.avatar" [alt]="testimonial.name" class="user-avatar" />
-                <div class="user-info">
-                  <div class="user-name">{{ testimonial.name }}</div>
-                  <div class="user-role">{{ testimonial.role }}</div>
-                </div>
-              </div>
-              <div class="user-rating">
-                <img src="/assets/icon-star.svg" alt="5 stars rating" class="rating-img" />
-                <!-- Fallback if image missing -->
-                <span class="rating-text">5 stars rating</span>
-              </div>
-            </div>
-          }
+          <div class="user-rating">
+            <img src="/assets/icon-star.svg" alt="5 stars rating" class="rating-img" />
+            <span class="rating-text">5 stars rating</span>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

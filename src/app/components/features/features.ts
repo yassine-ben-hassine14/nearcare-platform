@@ -11,6 +11,7 @@ import { ScrollAnimationDirective } from '../../directives/scroll-animation.dire
   styleUrls: ['./features.scss']
 })
 export class FeaturesComponent {
+
   features = [
     {
       id: 1,

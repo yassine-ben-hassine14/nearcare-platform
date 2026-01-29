@@ -1,4 +1,3 @@
-// Variables
 $primary-color: #FF5A5F;
 $bg-color: #F9FAFB;
 $text-dark: #37485E;
@@ -7,7 +6,6 @@ $white: #ffffff;
 $sidebar-width: 260px;
 $card-shadow: 0px 12px 32px rgba(0, 0, 0, 0.08);
 
-// Hide global body backgrounds for admin dashboard
 :host {
     display: block;
     position: relative;
@@ -32,7 +30,6 @@ $card-shadow: 0px 12px 32px rgba(0, 0, 0, 0.08);
     position: relative;
 }
 
-// Sidebar
 .sidebar {
     width: $sidebar-width;
     background-color: $white;
@@ -128,7 +125,6 @@ $card-shadow: 0px 12px 32px rgba(0, 0, 0, 0.08);
     }
 }
 
-// Main Content
 .main-content {
     flex-grow: 1;
     margin-left: $sidebar-width;
@@ -155,7 +151,6 @@ $card-shadow: 0px 12px 32px rgba(0, 0, 0, 0.08);
     gap: 40px;
 }
 
-// Widgets
 .widgets-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -210,7 +205,6 @@ $card-shadow: 0px 12px 32px rgba(0, 0, 0, 0.08);
     }
 }
 
-// Section Base Styles
 .section-title {
     font-size: 20px;
     font-weight: 700;
@@ -218,7 +212,6 @@ $card-shadow: 0px 12px 32px rgba(0, 0, 0, 0.08);
     margin-bottom: 24px;
 }
 
-// Messages Table
 .messages-section {
     .section-card {
         background: white;
@@ -331,7 +324,6 @@ $card-shadow: 0px 12px 32px rgba(0, 0, 0, 0.08);
     }
 }
 
-// Media Queries
 @media (max-width: 1024px) {
     .widgets-row {
         grid-template-columns: 1fr;

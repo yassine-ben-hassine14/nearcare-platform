@@ -9,5 +9,4 @@ import { RouterModule } from '@angular/router';
   templateUrl: './hero.html',
   styleUrls: ['./hero.scss']
 })
-export class HeroComponent {
-}
+export class HeroComponent { }

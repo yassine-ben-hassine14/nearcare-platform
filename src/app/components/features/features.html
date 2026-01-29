@@ -1,5 +1,6 @@
 <section class="features">
   <div class="features-container">
+
     <div class="features-header">
       <h2 class="features-title">
         Une solution pour <span class="highlight">tous les acteurs</span>
@@ -10,21 +11,22 @@
     </div>
 
     <div class="features-grid">
-      <div *ngFor="let feature of features; let i = index" 
-           class="feature-card" 
-           [style.--gradient]="feature.gradient"
-           appScrollAnimation
-           [style.transition-delay]="(i * 200) + 'ms'">
+
+      <!-- loop thru features + use index for anim delays -->
+      <div *ngFor="let feature of features; let i = index" class="feature-card" [style.--gradient]="feature.gradient"
+        appScrollAnimation [style.transition-delay]="(i * 200) + 'ms'">
+
         <div class="card-bg" [style.background]="feature.bgGradient"></div>
-        
+
         <div class="feature-content">
           <img [src]="feature.icon" [alt]="feature.title" class="feature-icon" />
-          
+
           <div class="feature-header">
             <h3 class="feature-title">{{ feature.title }}</h3>
             <p class="feature-subtitle">{{ feature.subtitle }}</p>
           </div>
 
+          <!-- list out benefits for this feature -->
           <div class="benefits-list">
             <div *ngFor="let benefit of feature.benefits" class="benefit-item">
               <div class="benefit-icon-wrapper">

@@ -30,7 +30,7 @@
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 32px;
-  box-shadow: 
+  box-shadow:
     0 20px 40px -8px rgba(55, 72, 94, 0.08),
     0 12px 20px -8px rgba(0, 0, 0, 0.04),
     inset 0 0 0 1px rgba(255, 255, 255, 0.5);
@@ -38,7 +38,7 @@
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 
+    box-shadow:
       0 30px 60px -12px rgba(55, 72, 94, 0.12),
       0 18px 36px -18px rgba(0, 0, 0, 0.06),
       inset 0 0 0 1px rgba(255, 255, 255, 0.8);
@@ -104,7 +104,7 @@
 }
 
 .user-card {
-  background: rgba(255, 189, 189, 0.4); /* Pinkish background */
+  background: rgba(255, 189, 189, 0.4);
   border-radius: 20px;
   padding: 20px;
   cursor: pointer;
@@ -162,19 +162,16 @@
   align-items: center;
   gap: 8px;
   margin-top: auto;
-  
+
   .rating-img {
-    display: none; /* Hide if not present, use SVGs instead */
+    display: none;
   }
 
   .rating-text {
-     /* If we want to use the SVGs like in the main card, we can replicate them here or just use text/image provided */
-     display: none;
+    display: none;
   }
 }
 
-/* Re-adding stars for the user card using pseudo-element or background if needed, 
-   but for now let's just use the SVG stars */
 .user-rating::before {
   content: '★★★★★';
   color: #FFC107;
@@ -222,6 +219,7 @@
     height: 20px;
   }
 }
+
 .user-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -239,7 +237,7 @@
   gap: 12px;
   box-shadow: var(--shadow-card);
   transition: var(--transition-base);
-  
+
   &:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-card-lg);
@@ -282,7 +280,7 @@
 .user-rating {
   display: flex;
   justify-content: flex-start;
-  
+
   img {
     height: 16px;
     width: auto;
@@ -294,7 +292,7 @@
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  
+
   .user-cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -304,12 +302,12 @@
   .container {
     padding: 0 40px;
   }
-  
+
   .testimonials-title {
     font-size: 36px;
     line-height: 42px;
   }
-  
+
   .testimonial-quote-card {
     padding: 32px;
   }
@@ -319,43 +317,43 @@
   .testimonials {
     padding: 80px 0 100px;
   }
-  
+
   .container {
     padding: 0 24px;
   }
-  
+
   .testimonials-header {
     margin-bottom: 48px;
   }
-  
+
   .testimonials-title {
     font-size: 28px;
     line-height: 36px;
   }
-  
+
   .testimonials-subtitle {
     font-size: 16px;
   }
-  
+
   .testimonials-content {
     margin-bottom: 48px;
   }
-  
+
   .testimonial-main {
     gap: 24px;
     margin-bottom: 32px;
   }
-  
+
   .testimonial-quote-card {
     padding: 24px;
     min-height: auto;
   }
-  
+
   .quote-text {
     font-size: 16px;
     line-height: 26px;
   }
-  
+
   .user-cards {
     grid-template-columns: 1fr;
     gap: 16px;

@@ -116,7 +116,7 @@ input:focus {
   z-index: 20;
 }
 
-.toast.visible {
+.toast.show {
   opacity: 1;
   transform: translateY(0);
 }
@@ -125,9 +125,11 @@ input:focus {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.04);
   }
+
   100% {
     transform: scale(1);
   }
@@ -137,15 +139,19 @@ input:focus {
   0% {
     transform: translateX(0);
   }
+
   25% {
     transform: translateX(-4px);
   }
+
   50% {
     transform: translateX(4px);
   }
+
   75% {
     transform: translateX(-3px);
   }
+
   100% {
     transform: translateX(0);
   }

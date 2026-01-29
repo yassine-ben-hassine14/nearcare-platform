@@ -1,13 +1,18 @@
 import { TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { DataService } from './data';
 
-import { Data } from './data';
-
-describe('Data', () => {
-  let service: Data;
+describe('DataService', () => {
+  let service: DataService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(Data);
+    TestBed.configureTestingModule({
+      providers: [
+        DataService,
+        provideHttpClient()
+      ]
+    });
+    service = TestBed.inject(DataService);
   });
 
   it('should be created', () => {

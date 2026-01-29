@@ -1,23 +1,17 @@
 import {
   Component,
-  HostListener,
-  signal,
-  inject,
-  PLATFORM_ID,
   Input,
+  OnInit,
   AfterViewInit,
-  ViewChild,
   ElementRef,
-  ViewChildren,
-  QueryList,
-  OnChanges,
-  SimpleChanges,
-  OnInit
+  ViewChild,
+  ChangeDetectorRef
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { RouterModule, Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { RouterModule, Router, NavigationEnd, Event } from '@angular/router';
+import { Inject, PLATFORM_ID } from '@angular/core';
 
+/* top nav w/ active underline + scroll hide effect */
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -25,8 +19,7 @@ import { filter } from 'rxjs/operators';
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss'
 })
-export class NavbarComponent
-  implements OnInit, AfterViewInit, OnChanges {
+export class NavbarComponent implements OnInit, AfterViewInit {
 
   @Input() activeLabel = 'Accueil';
   @Input() hideUnderline = false;
@@ -39,128 +32,128 @@ export class NavbarComponent
     { label: 'Contact', path: '/contact' }
   ];
 
-  @ViewChild('navLinks', { static: false }) navLinks?: ElementRef<HTMLDivElement>;
-  @ViewChildren('navLink') navLinkItems?: QueryList<ElementRef<HTMLElement>>;
-
-  underlineLeft = signal('0px');
-  underlineWidth = signal('0px');
-
-  isHidden = signal(false);
-  isHovered = signal(false);
-  isCtaHovered = signal(false); // 👈 NEW
-
+  underlineLeft = '0px';
+  underlineWidth = '0px';
+  isHidden = false;
+  isHovered = false;
+  isCtaHovered = false;
   private lastScrollTop = 0;
-  private platformId = inject(PLATFORM_ID);
-  private router = inject(Router);
+
+  @ViewChild('navLinks') navLinksContainer?: ElementRef;
+
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private cdRef: ChangeDetectorRef
+  ) { }
 
   ngOnInit() {
-    if (!isPlatformBrowser(this.platformId)) return;
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
 
     this.setActiveLabelFromRoute(this.router.url);
 
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(event => {
-        this.setActiveLabelFromRoute(
-          (event as NavigationEnd).urlAfterRedirects
-        );
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        this.setActiveLabelFromRoute(event.urlAfterRedirects);
         this.updateUnderline();
-      });
+      }
+    });
+
+    window.addEventListener('scroll', () => {
+      this.checkScrollPosition();
+    });
   }
 
   ngAfterViewInit() {
-    this.updateUnderline();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['activeLabel']) {
+    // use setTimeout 0 to wait for next tick so DOM is ready
+    setTimeout(() => {
       this.updateUnderline();
-    }
+    }, 0);
   }
 
-  @HostListener('window:scroll')
-  onWindowScroll() {
-    if (!isPlatformBrowser(this.platformId)) return;
+  checkScrollPosition() {
+    const currentScrollPosition = window.scrollY;
 
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-    if (scrollTop < 50 || scrollTop < this.lastScrollTop) {
-      this.isHidden.set(false);
-    } else if (scrollTop > this.lastScrollTop && !this.isHovered()) {
-      this.isHidden.set(true);
+    if (currentScrollPosition < 50) {
+      this.isHidden = false;
+    }
+    else if (currentScrollPosition < this.lastScrollTop) {
+      this.isHidden = false;
+    }
+    else if (currentScrollPosition > this.lastScrollTop && !this.isHovered) {
+      this.isHidden = true;
     }
 
-    this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    if (currentScrollPosition <= 0) {
+      this.lastScrollTop = 0;
+    } else {
+      this.lastScrollTop = currentScrollPosition;
+    }
+
+    this.cdRef.detectChanges();
   }
 
   onMouseEnter() {
-    this.isHovered.set(true);
-    this.isHidden.set(false);
+    this.isHovered = true;
+    this.isHidden = false;
   }
 
   onMouseLeave() {
-    this.isHovered.set(false);
+    this.isHovered = false;
   }
 
   onCtaEnter() {
-    this.isCtaHovered.set(true);
+    this.isCtaHovered = true;
   }
 
   onCtaLeave() {
-    this.isCtaHovered.set(false);
+    this.isCtaHovered = false;
   }
 
   private updateUnderline() {
     if (!isPlatformBrowser(this.platformId)) return;
-    if (!this.navLinks || !this.navLinkItems) return;
 
     if (this.hideUnderline) {
-      this.underlineWidth.set('0px');
-      this.underlineLeft.set('0px');
+      this.underlineWidth = '0px';
+      this.underlineLeft = '0px';
       return;
     }
 
-    requestAnimationFrame(() => {
-      const links = this.navLinkItems?.toArray() ?? [];
-      const activeIndex = Math.max(
-        links.findIndex(
-          link => link.nativeElement.dataset['label'] === this.activeLabel
-        ),
-        0
-      );
+    if (!this.navLinksContainer) return;
+    const containerElement = this.navLinksContainer.nativeElement;
 
-      const activeLink = links[activeIndex];
-      if (!activeLink) return;
+    const activeLinkElement = containerElement.querySelector('.nav-link.active');
 
-      const containerRect =
-        this.navLinks?.nativeElement.getBoundingClientRect();
-      const linkRect = activeLink.nativeElement.getBoundingClientRect();
-      if (!containerRect) return;
+    if (!activeLinkElement) return;
 
-      const left = linkRect.left - containerRect.left;
+    const containerRect = containerElement.getBoundingClientRect();
+    const linkRect = activeLinkElement.getBoundingClientRect();
 
-      this.underlineLeft.set(`${Math.max(left, 0)}px`);
-      this.underlineWidth.set(`${linkRect.width}px`);
-    });
+    let distanceFromLeft = linkRect.left - containerRect.left;
+
+    if (distanceFromLeft < 0) {
+      distanceFromLeft = 0;
+    }
+
+    this.underlineLeft = distanceFromLeft + 'px';
+    this.underlineWidth = linkRect.width + 'px';
+
+    this.cdRef.detectChanges();
   }
 
   private setActiveLabelFromRoute(url: string) {
     if (url.includes('joindre-nearcare')) {
       this.activeLabel = '';
-      return;
-    }
-    if (url.includes('qui-sommes-nous')) {
+    } else if (url.includes('qui-sommes-nous')) {
       this.activeLabel = 'Qui sommes-nous ?';
-      return;
-    }
-    if (url.includes('fonctionnalites')) {
+    } else if (url.includes('fonctionnalites')) {
       this.activeLabel = 'Fonctionnalités';
-      return;
-    }
-    if (url.includes('contact')) {
+    } else if (url.includes('contact')) {
       this.activeLabel = 'Contact';
-      return;
+    } else {
+      this.activeLabel = 'Accueil';
     }
-    this.activeLabel = 'Accueil';
   }
 }

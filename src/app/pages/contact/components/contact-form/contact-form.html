@@ -1,65 +1,98 @@
 <form class="contact-form" (ngSubmit)="onSubmit()">
-  <div class="toast" [class.visible]="toastVisible()">
-    Merci ! Votre demande a été envoyée avec succès.
+
+  @if (showSuccess) {
+  <div class="success-card">
+    <div class="success-icon">✓</div>
+    <h3>Merci beaucoup !</h3>
+    <p>Votre message a été envoyé à l'équipe NearCare. Nous vous répondrons très bientôt.</p>
   </div>
+  }
+
+  <div class="toast" [class.show]="toastVisible">
+    <div class="toast-content">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="toast-icon">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+      <span>Message envoyé avec succès !</span>
+    </div>
+  </div>
+
   <div class="form-grid">
+
     <label class="form-field" [class.invalid]="isInvalid('establishment')" [class.valid]="isValid('establishment')">
       <span>Établissement de soin *</span>
-      <input type="text" placeholder="Établissement de soin" [(ngModel)]="contactData.establishment" name="establishment" (blur)="touched.establishment = true" />
+      <input type="text" placeholder="Établissement de soin" [(ngModel)]="contactData.establishment"
+        name="establishment" (blur)="touched.establishment = true" />
+
       @if (isInvalid('establishment')) {
-        <small class="error-message">Indiquez votre établissement.</small>
+      <small class="error-message">Indiquez votre établissement.</small>
       }
     </label>
+
     <label class="form-field" [class.invalid]="isInvalid('firstName')" [class.valid]="isValid('firstName')">
       <span>Prénom *</span>
-      <input type="text" placeholder="Prénom" [(ngModel)]="contactData.firstName" name="firstName" (blur)="touched.firstName = true" />
+      <input type="text" placeholder="Prénom" [(ngModel)]="contactData.firstName" name="firstName"
+        (blur)="touched.firstName = true" />
       @if (isInvalid('firstName')) {
-        <small class="error-message">Le prénom est requis.</small>
+      <small class="error-message">Le prénom est requis.</small>
       }
     </label>
+
     <label class="form-field" [class.invalid]="isInvalid('lastName')" [class.valid]="isValid('lastName')">
       <span>Nom *</span>
-      <input type="text" placeholder="Nom" [(ngModel)]="contactData.lastName" name="lastName" (blur)="touched.lastName = true" />
+      <input type="text" placeholder="Nom" [(ngModel)]="contactData.lastName" name="lastName"
+        (blur)="touched.lastName = true" />
       @if (isInvalid('lastName')) {
-        <small class="error-message">Le nom est requis.</small>
+      <small class="error-message">Le nom est requis.</small>
       }
     </label>
+
     <label class="form-field" [class.invalid]="isInvalid('function')" [class.valid]="isValid('function')">
       <span>Fonction *</span>
-      <input type="text" placeholder="Fonction" [(ngModel)]="contactData.function" name="function" (blur)="touched.function = true" />
+      <input type="text" placeholder="Fonction" [(ngModel)]="contactData.function" name="function"
+        (blur)="touched.function = true" />
       @if (isInvalid('function')) {
-        <small class="error-message">La fonction est requise.</small>
+      <small class="error-message">La fonction est requise.</small>
       }
     </label>
+
     <label class="form-field" [class.invalid]="isInvalid('email')" [class.valid]="isValid('email')">
       <span>Email *</span>
-      <input type="email" placeholder="Email" [(ngModel)]="contactData.email" name="email" (blur)="touched.email = true" />
+      <input type="email" placeholder="Email" [(ngModel)]="contactData.email" name="email"
+        (blur)="touched.email = true" />
       @if (isInvalid('email')) {
-        <small class="error-message">Entrez un email valide.</small>
+      <small class="error-message">Entrez un email valide.</small>
       }
     </label>
+
     <label class="form-field" [class.invalid]="isInvalid('phone')" [class.valid]="isValid('phone')">
       <span>Téléphone *</span>
-      <input type="tel" placeholder="Téléphone" [(ngModel)]="contactData.phone" name="phone" (blur)="touched.phone = true" />
+      <input type="tel" placeholder="Téléphone" [(ngModel)]="contactData.phone" name="phone"
+        (blur)="touched.phone = true" />
       @if (isInvalid('phone')) {
-        <small class="error-message">Entrez un numéro valide.</small>
+      <small class="error-message">Entrez un numéro valide.</small>
       }
     </label>
   </div>
+
   <label class="form-field full" [class.invalid]="isInvalid('message')" [class.valid]="isValid('message')">
     <span>Votre message *</span>
-    <textarea rows="4" placeholder="Votre message" [(ngModel)]="contactData.message" name="message" (blur)="touched.message = true"></textarea>
+    <textarea rows="4" placeholder="Votre message" [(ngModel)]="contactData.message" name="message"
+      (blur)="touched.message = true"></textarea>
     @if (isInvalid('message')) {
-      <small class="error-message">Ajoutez un message.</small>
+    <small class="error-message">Ajoutez un message.</small>
     }
   </label>
+
   <p class="form-note">* Informations obligatoires</p>
+
   <label class="form-consent" [class.invalid]="isInvalid('consent')">
     <input type="checkbox" [(ngModel)]="contactData.consent" name="consent" (blur)="touched.consent = true" />
     <span>En soumettant mes données j'accepte d'être recontacté *</span>
   </label>
   @if (isInvalid('consent')) {
-    <small class="error-message">Le consentement est obligatoire.</small>
+  <small class="error-message">Le consentement est obligatoire.</small>
   }
+
   <button type="submit" class="submit-button" [disabled]="!isFormValid()">J'envoie</button>
 </form>

@@ -8,4 +8,4 @@ import { CommonModule } from '@angular/common';
   templateUrl: './ceo-quote.html',
   styleUrl: './ceo-quote.scss'
 })
-export class CeoQuoteComponent {}
+export class CeoQuoteComponent { }
